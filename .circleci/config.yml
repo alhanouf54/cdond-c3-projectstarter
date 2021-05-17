@@ -293,7 +293,7 @@ cleanup:
 
 
 workflows:
-  my_workflow:
+  defulat:
     jobs:
       - build-frontend
       - build-backend
