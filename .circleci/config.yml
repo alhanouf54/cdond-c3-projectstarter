@@ -288,6 +288,7 @@ cleanup:
           if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
           then
             # your code here
+            exit 1
           fi
 
 
