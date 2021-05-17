@@ -1,5 +1,6 @@
 version: 2.1
-
+orbs:
+  newman: postman/newman@0.0.2
 commands:
   destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
@@ -31,8 +32,16 @@ commands:
             #  Add revert code here. You can find this in the Getting Started section.
               
             fi
-            
+
+
 jobs:
+  newman-collection-run:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./collection.json
+          
   build-frontend:
     docker:
       - image: circleci/node:13.8.0
