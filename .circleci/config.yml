@@ -382,35 +382,35 @@ workflows:
          filters:
               branches:
                 only: main
-          requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+         requires: [test-frontend, test-backend, scan-frontend, scan-backend]
           
       - configure-infrastructure:
          filters:
              branches:
                 only: main
-          requires: [deploy-infrastructure]
+         requires: [deploy-infrastructure]
       - run-migrations:
          filters:
             branches:
               only: main
-          requires: [configure-infrastructure]
+         requires: [configure-infrastructure]
       - deploy-frontend:
          filters:
               branches:
                 only: main
-          requires: [run-migrations]
+         requires: [run-migrations]
       - deploy-backend:
          filters:
             branches:
               only: main
-          requires: [run-migrations]
+         requires: [run-migrations]
       - smoke-test:
-         filters:
-           branches:
-            only: main
-        requires: [deploy-backend, deploy-frontend]
+          filters:
+            branches:
+              only: main
+          requires: [deploy-backend, deploy-frontend]
       - cloudfront-update:
-         filters:
+          filters:
             branches:
               only: main
           requires: [smoke-test]
@@ -418,4 +418,4 @@ workflows:
            filters:
               branches:
                 only: main
-          requires: [cloudfront-update]
+           requires: [cloudfront-update]
