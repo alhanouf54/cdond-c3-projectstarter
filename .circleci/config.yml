@@ -235,7 +235,7 @@ jobs:
           command: |
            apk add --update tar gzip ansible nodejs npm curl
            pip install awscli
-           
+      - run:
           name: Get backend url
           command: |
             export BACKEND_IP=$(aws ec2 describe-instances \
