@@ -1,7 +1,6 @@
----
-- name: Config backend server
-  hosts: backend-server
+--
   user: ubuntu
+  hosts: all
   become: true
   vars:
     environment_config:
