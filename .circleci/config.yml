@@ -187,7 +187,7 @@ jobs:
           name: Configure backend server
           command: |
             echo $(curl -H "token: b57dc1d2-fd92-48ee-a211-47f04bdf8c60" --request GET https://api.memstash.io/values/backend_api) >> .circleci/ansible/inventory
-            ansible-playbook -i .circleci/ansible/inventory .circleci/ansible/config-server-playbook.yml
+            ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/config-server-playbook.yml
 
 
      
