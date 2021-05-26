@@ -383,7 +383,7 @@ workflows:
          requires: [scan-frontend, scan-backend]
          filters:
             branches:
-              only: main
+              only: master
       - configure-infrastructure:
 
          requires: [deploy-infrastructure]
