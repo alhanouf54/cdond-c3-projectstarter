@@ -202,6 +202,7 @@ jobs:
           command: |
              cd backend
              npm i
+             npm run build
              npm run migrations
       - run:
           name: Send migration results to memstash
