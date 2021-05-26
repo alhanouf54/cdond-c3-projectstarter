@@ -1,6 +1,6 @@
 --
-  user: ubuntu
-  hosts: all
+- name: "configuration play." 
+  hosts: web
   become: true
   vars:
     environment_config:
