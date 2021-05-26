@@ -188,7 +188,7 @@ jobs:
             cd .circleci/ansible
               ansible-playbook -i inventory.txt config-server-playbook.yml
  
-     - destroy-environment
+      - destroy-environment
 
      
 
