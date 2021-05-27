@@ -25,16 +25,16 @@
         state: latest
         update_cache: yes
         
- Environment:
-         TYPEORM_CONNECTION: "{{ lookup('env','TYPEORM_CONNECTION') }}"
-         TYPEORM_HOST: "{{ lookup('env','TYPEORM_HOST') }}"
-         TYPEORM_PORT: "{{ lookup('env','TYPEORM_'TYPEORM_PORT') }}"
-         TYPEORM_USERNAME: "{{ lookup('env','TYPEORM_USERNAME') }}"
-         TYPEORM_PASSWORD: "{{ lookup('env','TYPEORM_PASSWORD') }}"
-         TYPEORM_DATABASE: "{{ lookup('env','TYPEORM_DATABASE') }}"
-         TYPEORM_MIGRATIONS: "{{ lookup('env','TYPEORM_MIGRATIONS') }}"
-         TYPEORM_ENTITIES: "{{ lookup('env','TYPEORM_ENTITIES') }}"
-  
+   environment:
+     TYPEORM_CONNECTION: "{{ lookup('env','TYPEORM_CONNECTION') }}"
+     TYPEORM_HOST: "{{ lookup('env','TYPEORM_HOST') }}"
+     TYPEORM_PORT: "{{ lookup('env','TYPEORM_'TYPEORM_PORT') }}"
+     TYPEORM_USERNAME: "{{ lookup('env','TYPEORM_USERNAME') }}"
+     TYPEORM_PASSWORD: "{{ lookup('env','TYPEORM_PASSWORD') }}"
+     TYPEORM_DATABASE: "{{ lookup('env','TYPEORM_DATABASE') }}"
+     TYPEORM_MIGRATIONS: "{{ lookup('env','TYPEORM_MIGRATIONS') }}"
+     TYPEORM_ENTITIES: "{{ lookup('env','TYPEORM_ENTITIES') }}"
+
   roles:
     - configure-server
     - configure-prometheus-node-exporter
