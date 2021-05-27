@@ -1,9 +1,9 @@
 ---
 - name: configuration 
-  hosts: all
+  hosts: web
   user: ubuntu
   become: true
-  # gather_facts: false
+  gather_facts: false
 
   vars:
       
