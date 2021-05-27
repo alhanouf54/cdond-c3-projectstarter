@@ -6,11 +6,19 @@
   gather_facts: false
 
   vars:
-      
-   - ansible_python_interpreter: /usr/bin/python3
-   - ansible_host_key_checking: false
-   - nsible_stdout_callback: yaml
-     
+     ansible_python_interpreter: /usr/bin/python3
+     ansible_host_key_checking: false
+     nsible_stdout_callback: yaml
+     environment:
+       TYPEORM_CONNECTION: "{{ lookup('env','TYPEORM_CONNECTION') }}"
+       TYPEORM_HOST: "{{ lookup('env','TYPEORM_HOST') }}"
+       TYPEORM_PORT: "{{ lookup('env','TYPEORM_'TYPEORM_PORT') }}"
+       TYPEORM_USERNAME: "{{ lookup('env','TYPEORM_USERNAME') }}"
+       TYPEORM_PASSWORD: "{{ lookup('env','TYPEORM_PASSWORD') }}"
+       TYPEORM_DATABASE: "{{ lookup('env','TYPEORM_DATABASE') }}"
+       TYPEORM_MIGRATIONS: "{{ lookup('env','TYPEORM_MIGRATIONS') }}"
+       TYPEORM_ENTITIES: "{{ lookup('env','TYPEORM_ENTITIES') }}"
+
   
 
   pre_tasks:
@@ -25,15 +33,7 @@
         state: latest
         update_cache: yes
         
-   environment:
-     TYPEORM_CONNECTION: "{{ lookup('env','TYPEORM_CONNECTION') }}"
-     TYPEORM_HOST: "{{ lookup('env','TYPEORM_HOST') }}"
-     TYPEORM_PORT: "{{ lookup('env','TYPEORM_'TYPEORM_PORT') }}"
-     TYPEORM_USERNAME: "{{ lookup('env','TYPEORM_USERNAME') }}"
-     TYPEORM_PASSWORD: "{{ lookup('env','TYPEORM_PASSWORD') }}"
-     TYPEORM_DATABASE: "{{ lookup('env','TYPEORM_DATABASE') }}"
-     TYPEORM_MIGRATIONS: "{{ lookup('env','TYPEORM_MIGRATIONS') }}"
-     TYPEORM_ENTITIES: "{{ lookup('env','TYPEORM_ENTITIES') }}"
+ 
 
   roles:
     - configure-server
