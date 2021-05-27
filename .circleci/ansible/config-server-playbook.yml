@@ -1,6 +1,6 @@
 ---
 - name: configuration 
-  hosts: web
+  hosts: all
   user: ubuntu
   become: true
   # gather_facts: false
