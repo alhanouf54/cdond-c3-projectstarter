@@ -191,8 +191,6 @@ jobs:
             echo ENVIROMENT=production > "backend/.env"
            
             echo TYPEORM_CONNECTION=postgres >> "backend/.env"
-            echo "here we are"
-            echo "$TYPEORM_CONNECTION"
             echo TYPEORM_MIGRATIONS_DIR=./src/migrations >> "backend/.env"
             echo TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts >> "backend/.env"
             echo TYPEORM_MIGRATIONS=./src/migrations/*.ts >> "backend/.env"
@@ -200,11 +198,8 @@ jobs:
             echo TYPEORM_PORT=$TYPEORM_PORT >> "backend/.env"
             echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> "backend/.env"
             echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> "backend/.env"
-            echo "TYPEORM_PASSWORD"
             echo TYPEORM_DATABASE=udapeople-prod> "backend/.env"
-            echo "$TYPEORM_DATABASE"
             cd .circleci/ansible
-          
             ansible-playbook -i inventory.txt config-server-playbook.yml
     
       - destroy-environment
