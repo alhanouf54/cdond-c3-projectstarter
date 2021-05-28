@@ -1,6 +1,6 @@
 ---
 - name: configuration 
-  hosts: backend
+  hosts: all
   user: ubuntu
   become: true
   gather_facts: false
@@ -15,10 +15,9 @@
        TYPEORM_PORT: "{{ lookup('env','TYPEORM_'TYPEORM_PORT') }}"
        TYPEORM_USERNAME: "{{ lookup('env','TYPEORM_USERNAME') }}"
        TYPEORM_PASSWORD: "{{ lookup('env','TYPEORM_PASSWORD') }}"
-       TYPEORM_DATABASE: udapeople-prod
-#"{{ lookup('env','TYPEORM_DATABASE') }}"
-       TYPEORM_MIGRATIONS: "{{ lookup('env','TYPEORM_MIGRATIONS') }}"
-       TYPEORM_ENTITIES: "{{ lookup('env','TYPEORM_ENTITIES') }}"
+       TYPEORM_DATABASE: "{{ lookup('env','TYPEORM_DATABASE') }}"
+       TYPEORM_MIGRATIONS: .src/migrations/*.ts
+       TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity.ts
 
   
 
