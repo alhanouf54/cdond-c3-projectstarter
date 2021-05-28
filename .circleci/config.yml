@@ -255,7 +255,7 @@ jobs:
             npm install
             npm run build
            
-            aws s3 sync . s3://udapeople-"${CIRCLE_WORKFLOW_ID:0:7}" --recursive
+            aws s3 sync . s3://udapeople-"${CIRCLE_WORKFLOW_ID:0:7}" --delete
       - destroy-environment
       - revert-migrations
    
