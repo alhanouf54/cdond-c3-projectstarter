@@ -317,11 +317,12 @@ jobs:
       - run:
           name: Get backend url smoke test
           command: |
-             backendIP=$(aws ec2 describe-instances \
-              --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --output text)
-             curl "http://${backendIP}:3030/api/status"
+            backendIP=$(curl -H "token: b57dc1d2-fd92-48ee-a211-47f04bdf8c60" --request GET https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID})
+          #   backendIP=$(aws ec2 describe-instances \
+            #  --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
+             # --query 'Reservations[*].Instances[*].PublicIpAddress' \
+           #   --output text)
+              curl "http://${backendIP}:3030/api/status"
               
       - run:
           name: Frontend smoke test
