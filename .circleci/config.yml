@@ -173,7 +173,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "b4:6a:45:81:21:9d:fb:4b:70:d5:03:a0:28:90:7f:9f"
+            - "ad:64:4c:a0:81:5f:31:f5:3e:3d:28:4a:69:c9:4d:7a"
       - attach_workspace:
           at: ~/project
       - run:
@@ -267,7 +267,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "b4:6a:45:81:21:9d:fb:4b:70:d5:03:a0:28:90:7f:9f"
+            - "ad:64:4c:a0:81:5f:31:f5:3e:3d:28:4a:69:c9:4d:7a"
       - attach_workspace:
           at: ~/project
       
@@ -340,7 +340,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "b4:6a:45:81:21:9d:fb:4b:70:d5:03:a0:28:90:7f:9f"
+            - "ad:64:4c:a0:81:5f:31:f5:3e:3d:28:4a:69:c9:4d:7a"
       - run:
           name: Update cloudfront distribution
           command: |
