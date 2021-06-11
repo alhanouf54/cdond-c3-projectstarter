@@ -123,9 +123,9 @@ jobs:
 #             cd backend
 #             npm audit fix --audit-level=critical --force
 
-#   deploy-infrastructure:
-#     docker:
-#       - image: amazon/aws-cli
+  deploy-infrastructure:
+    docker:
+      - image: amazon/aws-cli
 #     steps:
 #       - checkout
 #       - run: yum -y install tar gzip
@@ -147,24 +147,24 @@ jobs:
 #               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}" \
 #               --tags project=udaPeople
      
-#       - run:
-#           name: Add back-end ip to ansible inventory
-#           command: |
-#            URLS=$(aws ec2 describe-instances \
-#               --query "Reservations[*].Instances[*].PublicIpAddress" \
-#               --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
-#               --output text)
-              
-#              echo "$URLS">> .circleci/ansible/inventory.txt
-#              echo "${CIRCLE_WORKFLOW_ID:0:7}"
+      - run:
+          name: Add back-end ip to ansible inventory
+          command: |
+           URLS=$(aws ec2 describe-instances \
+              --query "Reservations[*].Instances[*].PublicIpAddress" \
+              --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --output text)
+             echo "$URLS"
+             echo "$URLS">> .circleci/ansible/inventory.txt
+             echo "${CIRCLE_WORKFLOW_ID:0:7}"
              
-#             curl -H "Content-Type: text/plain" -H "token: b57dc1d2-fd92-48ee-a211-47f04bdf8c60" --request PUT --data "$URLS" https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID:0:7}  
+            curl -H "Content-Type: text/plain" -H "token: b57dc1d2-fd92-48ee-a211-47f04bdf8c60" --request PUT --data "$URLS" https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID:0:7}  
           
-#       - persist_to_workspace:
-#           root: ~/
-#           paths:
-#             - project/.circleci/ansible/inventory.txt
-#       - destroy-environment
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/.circleci/ansible/inventory.txt
+      - destroy-environment
 
   configure-infrastructure:
     docker:
@@ -401,14 +401,14 @@ workflows:
 #           requires: [build-backend]
 #       - scan-frontend:
 #           requires: [build-frontend]
-#       - deploy-infrastructure:
+      - deploy-infrastructure:
 #          requires: [scan-frontend, scan-backend]
-#          filters:
-#             branches:
-#               only: master
+         filters:
+            branches:
+              only: master
       - configure-infrastructure
 
-#          requires: [deploy-infrastructure]
+         requires: [deploy-infrastructure]
 #       - run-migrations:
 
 #          requires: [configure-infrastructure]
