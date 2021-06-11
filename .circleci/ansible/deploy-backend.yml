@@ -2,7 +2,7 @@
 
 - name: "configuration play."
   hosts: web
-  user: ec2-user
+  user: ubuntu
   gather_facts: False
   vars:
     environment_config:
