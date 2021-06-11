@@ -1,6 +1,6 @@
 ---
 
-- name: Config backend 
+- name: "configuration play."
   hosts: web
   user: ubuntu
   gather_facts: False
