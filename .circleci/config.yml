@@ -155,7 +155,8 @@ jobs:
               --filters "Name=tag:Name,Values=backend-852c0ae" \
               --output text)
              echo "${URLS}"
-             echo "$URLS">> .circleci/ansible/inventory.txt
+             cd .circleci/ansible
+             echo "$URLS">> inventory.txt
              echo "${CIRCLE_WORKFLOW_ID:0:7}"
              
             curl -H "Content-Type: text/plain" -H "token: b57dc1d2-fd92-48ee-a211-47f04bdf8c60" --request PUT --data "$URLS" https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID:0:7}  
