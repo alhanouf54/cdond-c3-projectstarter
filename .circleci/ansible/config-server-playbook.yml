@@ -28,6 +28,7 @@
       become: true
       raw: test -e /usr/bin/python3 || (sudo apt-get -y update && apt-get install -y python3)
       changed_when: false
+    - setup:
 
 
   
